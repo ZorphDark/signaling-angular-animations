@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "signaling-animated-particles": {
+    "signaling-angular-animations": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/signaling-animated-particles",
+            "outputPath": "dist/signaling-angular-animations",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "signaling-animated-particles:build:production"
+              "browserTarget": "signaling-angular-animations:build:production"
             },
             "development": {
-              "browserTarget": "signaling-animated-particles:build:development"
+              "browserTarget": "signaling-angular-animations:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "signaling-animated-particles:build"
+            "browserTarget": "signaling-angular-animations:build"
           }
         },
         "test": {
@@ -107,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "501aa7e8-38a4-4530-b483-a86d4e6f1097"
   }
 }
