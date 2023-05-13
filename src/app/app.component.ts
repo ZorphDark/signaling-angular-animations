@@ -1,6 +1,6 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, effect, signal } from '@angular/core';
+import { Component, OnInit, Signal, computed, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,7 @@ import { Component, OnInit, effect, signal } from '@angular/core';
     ]),
     trigger('winAnimation', [
       transition('* => true', [
-        animate('3s', keyframes([
+        animate('5s', keyframes([
           style({ transform: 'translateX({{x1}}%) translateY({{y1}}%)', offset: 0.2 }),
           style({ transform: 'translateX({{x2}}%) translateY({{y2}}%)', offset: 0.4 }),
           style({ transform: 'translateX({{x3}}%) translateY({{y3}}%)', offset: 0.6 }),
@@ -43,13 +43,9 @@ export class AppComponent implements OnInit {
   sequenceCells: { row: number, column: number }[] = [];
   lastClickedCell: { row: number, column: number } | null = null;
   numberOfClickedCells = signal(0);
+  randomFactor: Signal<number> = signal(0);
   isGameFinished = signal(false);
 
-  constructor() {
-    effect(() => {
-      console.log(`Game updated with ${this.numberOfClickedCells()} clicked cells`);
-    })
-  }
 
   ngOnInit(): void {
     this.initializeCrossword();
@@ -134,13 +130,14 @@ export class AppComponent implements OnInit {
     let position: Record<string, number> = {};
     const maximumValue = 300;
 
-    //move this to the constructor
     // const randomFactor = this.sequence.length * maximumValue / (this.numberOfClickedCells() || 1); // ensure there's no division by zero
+
+    this.randomFactor = computed(() => this.sequence.length * maximumValue / (this.numberOfClickedCells() || 1))
 
     for (let i = 0; i < 8; i++) {
       let axis = i < 4 ? 'x' : 'y';
       let index = (i % 4) + 1;
-      position[`${axis}${index}`] = (Math.random() * 2 - 1) * randomFactor; // allow negative values
+      position[`${axis}${index}`] = (Math.random() * 2 - 1) * this.randomFactor(); // allow negative values
     }
     
     return {

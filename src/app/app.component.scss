@@ -2,13 +2,34 @@
   margin: 2em auto 1em;
   font-size: 24px;
   border-spacing: 0;
+  cursor: pointer;
 }
 
 .square {
-  width: 40px;
-  height: 40px;
+  width: 2.5em;
+  height: 2.5em;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid black;
+  border: 1px solid var(--border-color);
+  background: var(--cell-background-color);
   cursor: pointer;
+  color: var(--font-color);
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+p {
+  font-family: Courier, monospace;
+  color: var(--font-color);
+}
+
+button {
+  background-color: var( --border-color);
+  color: var(--light-old-color);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: Courier, monospace;
 }
