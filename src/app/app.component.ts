@@ -11,19 +11,19 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
   animations: [
     trigger('cellState', [
       state('correct', style({
-        backgroundColor: 'black',
-        color: 'white'
+        backgroundColor: 'var(--dark-old-color)',
+        color: 'var(--cell-background-color)'
       })),
       state('wrong', style({
-        backgroundColor: 'red',
-        color: 'white'
+        backgroundColor: 'var(--wrong-cell-color)',
+        color: 'var(--cell-background-color)'
       })),
       transition('default <=> correct', animate(300)),
       transition('wrong => correct', animate(600))
     ]),
     trigger('winAnimation', [
       transition('* => true', [
-        animate('5s', keyframes([
+        animate('4s', keyframes([
           style({ transform: 'translateX({{x1}}%) translateY({{y1}}%)', offset: 0.2 }),
           style({ transform: 'translateX({{x2}}%) translateY({{y2}}%)', offset: 0.4 }),
           style({ transform: 'translateX({{x3}}%) translateY({{y3}}%)', offset: 0.6 }),

@@ -1,13 +1,14 @@
 :root {
   --light-old-color: #f5f5dc;
   --font-color: #000;
-  --border-color: #8b4513;
+  --dark-old-color: #8b4513;
   --cell-background-color: #f0e68c;
+  --wrong-cell-color: #ff0000;
 }
 
 body {
   background-color: var(--light-old-color);
-  font-family: 'Cinzel Decorative', Courier, monospace;
+  font-family: 'Cinzel', Courier, monospace;
   text-align: center;
   color: var(--font-color);
 }

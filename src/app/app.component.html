@@ -11,8 +11,7 @@
   </tr>
 </table>
 
-<p>Number of clicked cells is {{ numberOfClickedCells() }} out of a word count of {{ sequence.length }}<p>
-</p>
-<p *ngIf="isGameFinished()">The furthest the cells will move from the center: {{ randomFactor() | number: '1.0-0' }} pixels</p>
+<p>Number of clicked cells is {{ numberOfClickedCells() }} out of a word count of {{ sequence.length }}</p>
+<p *ngIf="numberOfClickedCells() >= sequence.length">The furthest the cells will move from the center: {{ randomFactor() | number: '1.0-0' }} pixels</p>
 
-<button (click)="resetCrossword()">Restart Crossword</button>
+<button type="reset" (click)="resetCrossword()">Restart Crossword</button>

@@ -10,7 +10,7 @@
   height: 2.5em;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--dark-old-color);
   background: var(--cell-background-color);
   cursor: pointer;
   color: var(--font-color);
@@ -23,7 +23,7 @@ p {
 }
 
 button {
-  background-color: var( --border-color);
+  background-color: var( --dark-old-color);
   color: var(--light-old-color);
   border: none;
   padding: 10px 20px;
