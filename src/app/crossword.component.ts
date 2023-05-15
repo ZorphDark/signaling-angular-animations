@@ -25,10 +25,10 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
     trigger('winAnimation', [
       transition('* => true', [
         animate('5s', keyframes([
-          style({ transform: 'translateX({{x1}}%) translateY({{y1}}%)', offset: 0.2 }),
-          style({ transform: 'translateX({{x2}}%) translateY({{y2}}%)', offset: 0.4 }),
-          style({ transform: 'translateX({{x3}}%) translateY({{y3}}%)', offset: 0.6 }),
-          style({ transform: 'translateX({{x4}}%) translateY({{y4}}%)', offset: 0.8 }),
+          style({ transform: 'translateX({{x1}}px) translateY({{y1}}px)', offset: 0.2 }),
+          style({ transform: 'translateX({{x2}}px) translateY({{y2}}px)', offset: 0.4 }),
+          style({ transform: 'translateX({{x3}}px) translateY({{y3}}px)', offset: 0.6 }),
+          style({ transform: 'translateX({{x4}}px) translateY({{y4}}px)', offset: 0.8 }),
           style({ transform: 'translateX(0) translateY(0)', offset: 1.0 }),
         ]))
       ])
@@ -46,7 +46,6 @@ export class CrosswordComponent implements OnInit {
   numberOfClickedCells = signal(0);
   randomFactor: Signal<number> = signal(0);
   isGameFinished = signal(false);
-
 
   ngOnInit(): void {
     this.initializeCrossword();
