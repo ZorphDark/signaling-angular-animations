@@ -1,8 +1,8 @@
 <article>
   <table class="board">
     <tr *ngFor="let row of crossword; let x = index">
-      <td class="square" *ngFor="let cell of row; let y = index" [@cellState]="{ value: cell.state }"
-        [@winAnimation]="randomizeCellPosition()" (click)="checkLetter(x, y)">
+      <td *ngFor="let cell of row; let y = index" [@cellState]="{ value: cell.state }"
+        [@winAnimation]="randomizeCellPosition()" (click)="checkLetter(x, y)" class="square">
         {{cell.letter}}
       </td>
     </tr>

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, Signal, computed, signal } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-crossword',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  templateUrl: './crossword.component.html',
+  styleUrls: ['./crossword.component.scss'],
   animations: [
     trigger('cellState', [
       state('correct', style({
@@ -36,7 +36,7 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
   ]
 })
 
-export class AppComponent implements OnInit {
+export class CrosswordComponent implements OnInit {
   crossword: { letter?: string, state: string }[][] = [];
   crosswordSize = 7; // 7x7 board
   sequence = 'SIGNALS';
@@ -75,13 +75,13 @@ export class AppComponent implements OnInit {
     return cell;
   }
 
-  createBoard() {
+  createBoard(): void {
     this.crossword = Array.from({ length: this.crosswordSize }, (x, i) =>
       Array.from({ length: this.crosswordSize }, (x, j) => this.initializeCell(i, j))
     );
   }
   
-  fillBoard() {
+  fillBoard(): void {
     for (let i = 0; i < this.crosswordSize; i++) {
       for (let j = 0; j < this.crosswordSize; j++) {
         this.crossword[i][j] = this.initializeCell(i, j);
@@ -131,9 +131,7 @@ export class AppComponent implements OnInit {
     let position: Record<string, number> = {};
     const maximumValue = 300;
 
-    // const randomFactor = this.sequence.length * maximumValue / (this.numberOfClickedCells() || 1); // ensure there's no division by zero
-
-    this.randomFactor = computed(() => this.sequence.length * maximumValue / (this.numberOfClickedCells() || 1))
+    this.randomFactor = computed(() => this.sequence.length * maximumValue / (this.numberOfClickedCells() || 1)) // ensure there's no division by zero
 
     for (let i = 0; i < 8; i++) {
       let axis = i < 4 ? 'x' : 'y';
