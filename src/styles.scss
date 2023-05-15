@@ -1,14 +1,13 @@
 :root {
-  --light-old-color: #f5f5dc;
-  --font-color: #000;
-  --dark-old-color: #8b4513;
-  --cell-background-color: #f0e68c;
-  --wrong-cell-color: #ff0000;
+  --light-old-color: #f2f1e8;
+  --dark-old-color: #3b281a;
+  --cell-background-color: #eee9cf;
+  --wrong-cell-color: #cc3232;
 }
 
 body {
   background-color: var(--light-old-color);
   font-family: 'Cinzel', Courier, monospace;
   text-align: center;
-  color: var(--font-color);
+  color: var(--dark-old-color);
 }

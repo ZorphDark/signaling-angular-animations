@@ -19,11 +19,12 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
         color: 'var(--cell-background-color)'
       })),
       transition('default <=> correct', animate(300)),
+      transition('default <=> wrong', animate(300)),
       transition('wrong => correct', animate(600))
     ]),
     trigger('winAnimation', [
       transition('* => true', [
-        animate('4s', keyframes([
+        animate('5s', keyframes([
           style({ transform: 'translateX({{x1}}%) translateY({{y1}}%)', offset: 0.2 }),
           style({ transform: 'translateX({{x2}}%) translateY({{y2}}%)', offset: 0.4 }),
           style({ transform: 'translateX({{x3}}%) translateY({{y3}}%)', offset: 0.6 }),
