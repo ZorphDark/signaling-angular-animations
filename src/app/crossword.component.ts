@@ -105,7 +105,7 @@ export class CrosswordComponent implements OnInit {
   }
 
   checkLetter(row: number, column: number): void {
-    if (this.isGameFinished()) {
+    if (this.isGameFinished() || this.crossword[row][column].state === "correct") {
       return;
     }
 
