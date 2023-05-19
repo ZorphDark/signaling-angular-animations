@@ -88,11 +88,6 @@ export class CrosswordComponent implements OnInit {
     }
   }
 
-  resetCrossword(): void {
-    console.log("board reset");
-    this.initializeCrossword();
-  }
-
   isAdjacentCell(row: number, column: number): boolean {
     if (!this.lastClickedCell) {
       return true;
