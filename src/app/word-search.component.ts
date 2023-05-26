@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, Signal, computed, signal } from '@angular/core';
 
 @Component({
-  selector: 'app-crossword',
+  selector: 'app-word-search',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './crossword.component.html',
-  styleUrls: ['./crossword.component.scss'],
+  templateUrl: './word-search.component.html',
+  styleUrls: ['./word-search.component.scss'],
   animations: [
     trigger('cellState', [
       state('correct', style({
@@ -36,9 +36,9 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
   ]
 })
 
-export class CrosswordComponent implements OnInit {
-  crossword: { letter?: string, state: string }[][] = [];
-  crosswordSize = 7; // 7x7 board
+export class WordSearchComponent implements OnInit {
+  wordSearch: { letter?: string, state: string }[][] = [];
+  wordSearchSize = 7; // 7x7 board
   sequence = 'SIGNALS';
   sequenceIndex = 0;
   sequenceCells: { row: number, column: number }[] = [];
@@ -48,11 +48,11 @@ export class CrosswordComponent implements OnInit {
   isGameFinished = signal(false);
 
   ngOnInit(): void {
-    this.initializeCrossword();
+    this.initializeWordSearch();
   }
 
-  initializeCrossword(): void {
-    if (!this.crossword.length) { // If board is not created yet
+  initializeWordSearch(): void {
+    if (!this.wordSearch.length) { // If board is not created yet
       this.createBoard();
     }
 
@@ -75,15 +75,15 @@ export class CrosswordComponent implements OnInit {
   }
 
   createBoard(): void {
-    this.crossword = Array.from({ length: this.crosswordSize }, (x, i) =>
-      Array.from({ length: this.crosswordSize }, (x, j) => this.initializeCell(i, j))
+    this.wordSearch = Array.from({ length: this.wordSearchSize }, (x, i) =>
+      Array.from({ length: this.wordSearchSize }, (x, j) => this.initializeCell(i, j))
     );
   }
   
   fillBoard(): void {
-    for (let i = 0; i < this.crosswordSize; i++) {
-      for (let j = 0; j < this.crosswordSize; j++) {
-        this.crossword[i][j] = this.initializeCell(i, j);
+    for (let i = 0; i < this.wordSearchSize; i++) {
+      for (let j = 0; j < this.wordSearchSize; j++) {
+        this.wordSearch[i][j] = this.initializeCell(i, j);
       }
     }
   }
@@ -100,16 +100,16 @@ export class CrosswordComponent implements OnInit {
   }
 
   checkLetter(row: number, column: number): void {
-    if (this.isGameFinished() || this.crossword[row][column].state === "correct") {
+    if (this.isGameFinished() || this.wordSearch[row][column].state === "correct") {
       return;
     }
 
     this.numberOfClickedCells.update(amount => amount + 1);
 
     if (this.isAdjacentCell(row, column) &&
-      this.crossword[row][column].letter === this.sequence[this.sequenceIndex]) {
+      this.wordSearch[row][column].letter === this.sequence[this.sequenceIndex]) {
       this.sequenceIndex++;
-      this.crossword[row][column].state = 'correct';
+      this.wordSearch[row][column].state = 'correct';
       this.lastClickedCell = { row, column };
       this.sequenceCells.push({ row, column });
 
@@ -117,7 +117,7 @@ export class CrosswordComponent implements OnInit {
         this.isGameFinished.set(true);
       }
     } else {
-      this.crossword[row][column].state = 'wrong';
+      this.wordSearch[row][column].state = 'wrong';
     }
   }
 

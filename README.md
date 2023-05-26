@@ -1,6 +1,6 @@
 # SignalingAnimatedParticles
 
-A simple crossword puzzle to showcase the intersection of Angular Signals with Animations.
+A simple word search puzzle to showcase the intersection of Angular Signals with Animations.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 

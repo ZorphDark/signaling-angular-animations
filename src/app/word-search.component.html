@@ -1,6 +1,6 @@
 <article>
   <table class="board">
-    <tr *ngFor="let row of crossword; let x = index">
+    <tr *ngFor="let row of wordSearch; let x = index">
       <td *ngFor="let cell of row; let y = index" [@cellState]="{ value: cell.state }"
         [@winAnimation]="randomizeCellPosition()" (click)="checkLetter(x, y)" class="square">
         {{cell.letter}}
@@ -8,7 +8,7 @@
     </tr>
   </table>
 
-  <button type="reset" (click)="initializeCrossword()">Restart Crossword</button>
+  <button type="reset" (click)="initializeWordSearch()">Restart Word Search</button>
 
   <footer>
     <p>Number of clicked cells is {{ numberOfClickedCells() }} out of a word count of {{ sequence.length }}</p>
