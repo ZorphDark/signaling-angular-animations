@@ -1,31 +1,31 @@
-.board {
+.tablero {
   margin: 2em auto 1em;
   font-size: 24px;
   border-spacing: 0;
   cursor: pointer;
 }
 
-.square {
+.casilla {
   width: 2.5em;
   height: 2.5em;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid var(--dark-old-color);
-  background: var(--cell-background-color);
+  border: 1px solid var(--color-viejo-oscuro);
+  background: var(--color-casilla);
   cursor: pointer;
-  color: var(--dark-old-color);
+  color: var(--color-viejo-oscuro);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
 p {
   font-family: serif;
-  color: var(--dark-old-color);
+  color: var(--color-viejo-oscuro);
   letter-spacing: 0.02em;
 }
 
 button {
-  background-color: var( --dark-old-color);
-  color: var(--light-old-color);
+  background-color: var( --color-viejo-oscuro);
+  color: var(--color-viejo-claro);
   border: none;
   padding: 10px 20px;
   font-size: 16px;

@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { WordSearchComponent } from './app/word-search.component';
+import { SopaDeLetrasComponent } from './app/sopa-de-letras.component';
 
-bootstrapApplication(WordSearchComponent, appConfig)
+bootstrapApplication(SopaDeLetrasComponent, appConfig)
   .catch((err) => console.error(err));
