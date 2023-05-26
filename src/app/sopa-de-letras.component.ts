@@ -52,7 +52,7 @@ export class SopaDeLetrasComponent implements OnInit {
   }
 
   iniciarTablero(): void {
-    if (!this.sopaDeLetras.length) { // If board is not created yet
+    if (!this.sopaDeLetras.length) { // si el tablero aún no ha sido creado
       this.createBoard();
     }
 
@@ -96,7 +96,7 @@ export class SopaDeLetrasComponent implements OnInit {
     let diferenciaDeFila = Math.abs(this.ultimaCasillaSeleccionada.fila - fila);
     let diferenciaDeColumna = Math.abs(this.ultimaCasillaSeleccionada.columna - columna);
 
-    return diferenciaDeFila <= 1 && diferenciaDeColumna <= 1; // devuelve verdadero si la celda es adyacente a la ultima seleccionada
+    return diferenciaDeFila <= 1 && diferenciaDeColumna <= 1; // retorna verdadero si la celda es adyacente a la ultima seleccionada
   }
 
   comprobarLetra(fila: number, columna: number): void {
