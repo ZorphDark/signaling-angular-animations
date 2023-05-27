@@ -37,7 +37,7 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
 })
 
 export class SopaDeLetrasComponent implements OnInit {
-  sopaDeLetras: { letra?: string, estado: string }[][] = [];
+  tableroDeSopaDeLetras: { letra?: string, estado: string }[][] = [];
   tamañoDelTablero = 7; // 7x7 board
   secuenciaDeLetras = 'SEÑALES';
   indiceDeSecuenciaDeLetras = 0;
@@ -52,7 +52,7 @@ export class SopaDeLetrasComponent implements OnInit {
   }
 
   iniciarTablero(): void {
-    if (!this.sopaDeLetras.length) { // si el tablero aún no ha sido creado
+    if (!this.tableroDeSopaDeLetras.length) { // si el tablero aún no ha sido creado
       this.crearTablero();
     }
 
@@ -75,7 +75,7 @@ export class SopaDeLetrasComponent implements OnInit {
   }
 
   crearTablero(): void {
-    this.sopaDeLetras = Array.from({ length: this.tamañoDelTablero }, (x, i) =>
+    this.tableroDeSopaDeLetras = Array.from({ length: this.tamañoDelTablero }, (x, i) =>
       Array.from({ length: this.tamañoDelTablero }, (x, j) => this.inicializarCasilla(i, j))
     );
   }
@@ -83,7 +83,7 @@ export class SopaDeLetrasComponent implements OnInit {
   rellenarTablero(): void {
     for (let i = 0; i < this.tamañoDelTablero; i++) {
       for (let j = 0; j < this.tamañoDelTablero; j++) {
-        this.sopaDeLetras[i][j] = this.inicializarCasilla(i, j);
+        this.tableroDeSopaDeLetras[i][j] = this.inicializarCasilla(i, j);
       }
     }
   }
@@ -100,16 +100,16 @@ export class SopaDeLetrasComponent implements OnInit {
   }
 
   comprobarLetra(fila: number, columna: number): void {
-    if (this.esFinalDelJuego() || this.sopaDeLetras[fila][columna].estado === "correcto") {
+    if (this.esFinalDelJuego() || this.tableroDeSopaDeLetras[fila][columna].estado === "correcto") {
       return;
     }
 
     this.numeroDeCasillasSeleccionadas.update(total => total + 1);
 
     if (this.esCasillaAdyacente(fila, columna) &&
-      this.sopaDeLetras[fila][columna].letra === this.secuenciaDeLetras[this.indiceDeSecuenciaDeLetras]) {
+      this.tableroDeSopaDeLetras[fila][columna].letra === this.secuenciaDeLetras[this.indiceDeSecuenciaDeLetras]) {
       this.indiceDeSecuenciaDeLetras++;
-      this.sopaDeLetras[fila][columna].estado = 'correcto';
+      this.tableroDeSopaDeLetras[fila][columna].estado = 'correcto';
       this.ultimaCasillaSeleccionada = { fila: fila, columna: columna };
       this.secuenciaDeCasillas.push({ fila: fila, columna: columna });
 
@@ -117,7 +117,7 @@ export class SopaDeLetrasComponent implements OnInit {
         this.esFinalDelJuego.set(true);
       }
     } else {
-      this.sopaDeLetras[fila][columna].estado = 'incorrecto';
+      this.tableroDeSopaDeLetras[fila][columna].estado = 'incorrecto';
     }
   }
 

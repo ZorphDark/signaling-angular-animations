@@ -1,6 +1,6 @@
 <article>
   <table class="tablero">
-    <tr *ngFor="let fila of sopaDeLetras; let x = index">
+    <tr *ngFor="let fila of tableroDeSopaDeLetras; let x = index">
       <td *ngFor="let casilla of fila; let y = index" [@estadoDeCasilla]="{ value: casilla.estado }"
         [@animacionFinal]="posicionAleatoriaDeCasilla()" (click)="comprobarLetra(x, y)" class="casilla">
         {{casilla.letra}}
