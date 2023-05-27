@@ -1,14 +1,14 @@
 <article>
   <table class="tablero">
-    <tr *ngFor="let fila of tableroDeSopaDeLetras; let x = index">
+    <tr *ngFor="let fila of tablero; let x = index">
       <td *ngFor="let casilla of fila; let y = index" [@estadoDeCasilla]="{ value: casilla.estado }"
-        [@animacionFinal]="posicionAleatoriaDeCasilla()" (click)="comprobarLetra(x, y)" class="casilla">
+        [@animacionFinal]="generarPosicionAleatoria()" (click)="comprobarLetra(x, y)" class="casilla">
         {{casilla.letra}}
       </td>
     </tr>
   </table>
 
-  <button type="reset" (click)="iniciarTablero()">Reiniciar Tablero</button>
+  <button type="reset" (click)="inicializarTablero()">Reiniciar Tablero</button>
 
   <footer>
     <p>Hay {{ numeroDeCasillasSeleccionadas() }} casillas seleccionadas de un total óptimo de {{ secuenciaDeLetras.length }}</p>
