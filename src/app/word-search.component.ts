@@ -37,8 +37,8 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
 })
 
 export class WordSearchComponent implements OnInit {
-  wordSearch: { letter?: string, state: string }[][] = [];
-  wordSearchSize = 7; // 7x7 board
+  wordSearchBoard: { letter?: string, state: string }[][] = [];
+  wordSearchBoardSize = 7; // 7x7 board
   sequence = 'SIGNALS';
   sequenceIndex = 0;
   sequenceCells: { row: number, column: number }[] = [];
@@ -52,7 +52,7 @@ export class WordSearchComponent implements OnInit {
   }
 
   initializeWordSearch(): void {
-    if (!this.wordSearch.length) { // If board is not created yet
+    if (!this.wordSearchBoard.length) { // If board is not created yet
       this.createBoard();
     }
 
@@ -75,15 +75,15 @@ export class WordSearchComponent implements OnInit {
   }
 
   createBoard(): void {
-    this.wordSearch = Array.from({ length: this.wordSearchSize }, (x, i) =>
-      Array.from({ length: this.wordSearchSize }, (x, j) => this.initializeCell(i, j))
+    this.wordSearchBoard = Array.from({ length: this.wordSearchBoardSize }, (x, i) =>
+      Array.from({ length: this.wordSearchBoardSize }, (x, j) => this.initializeCell(i, j))
     );
   }
   
   fillBoard(): void {
-    for (let i = 0; i < this.wordSearchSize; i++) {
-      for (let j = 0; j < this.wordSearchSize; j++) {
-        this.wordSearch[i][j] = this.initializeCell(i, j);
+    for (let i = 0; i < this.wordSearchBoardSize; i++) {
+      for (let j = 0; j < this.wordSearchBoardSize; j++) {
+        this.wordSearchBoard[i][j] = this.initializeCell(i, j);
       }
     }
   }
@@ -96,20 +96,20 @@ export class WordSearchComponent implements OnInit {
     let rowDifference = Math.abs(this.lastClickedCell.row - row);
     let columnDifference = Math.abs(this.lastClickedCell.column - column);
 
-    return rowDifference <= 1 && columnDifference <= 1; // true if the cell is adjacent of the last clicked cell
+    return rowDifference <= 1 && columnDifference <= 1; // true if the cell is adjacent to the last clicked cell
   }
 
   checkLetter(row: number, column: number): void {
-    if (this.isGameFinished() || this.wordSearch[row][column].state === "correct") {
+    if (this.isGameFinished() || this.wordSearchBoard[row][column].state === "correct") {
       return;
     }
 
     this.numberOfClickedCells.update(amount => amount + 1);
 
     if (this.isAdjacentCell(row, column) &&
-      this.wordSearch[row][column].letter === this.sequence[this.sequenceIndex]) {
+      this.wordSearchBoard[row][column].letter === this.sequence[this.sequenceIndex]) {
       this.sequenceIndex++;
-      this.wordSearch[row][column].state = 'correct';
+      this.wordSearchBoard[row][column].state = 'correct';
       this.lastClickedCell = { row, column };
       this.sequenceCells.push({ row, column });
 
@@ -117,7 +117,7 @@ export class WordSearchComponent implements OnInit {
         this.isGameFinished.set(true);
       }
     } else {
-      this.wordSearch[row][column].state = 'wrong';
+      this.wordSearchBoard[row][column].state = 'wrong';
     }
   }
 

@@ -1,6 +1,6 @@
 <article>
   <table class="board">
-    <tr *ngFor="let row of wordSearch; let x = index">
+    <tr *ngFor="let row of wordSearchBoard; let x = index">
       <td *ngFor="let cell of row; let y = index" [@cellState]="{ value: cell.state }"
         [@winAnimation]="randomizeCellPosition()" (click)="checkLetter(x, y)" class="square">
         {{cell.letter}}
