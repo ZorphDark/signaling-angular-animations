@@ -53,10 +53,10 @@ export class SopaDeLetrasComponent implements OnInit {
 
   iniciarTablero(): void {
     if (!this.sopaDeLetras.length) { // si el tablero aún no ha sido creado
-      this.createBoard();
+      this.crearTablero();
     }
 
-    this.fillBoard();
+    this.rellenarTablero();
 
     this.indiceDeSecuenciaDeLetras = 0;
     this.esFinalDelJuego.set(false);
@@ -74,13 +74,13 @@ export class SopaDeLetrasComponent implements OnInit {
     return casilla;
   }
 
-  createBoard(): void {
+  crearTablero(): void {
     this.sopaDeLetras = Array.from({ length: this.tamañoDelTablero }, (x, i) =>
       Array.from({ length: this.tamañoDelTablero }, (x, j) => this.inicializarCasilla(i, j))
     );
   }
   
-  fillBoard(): void {
+  rellenarTablero(): void {
     for (let i = 0; i < this.tamañoDelTablero; i++) {
       for (let j = 0; j < this.tamañoDelTablero; j++) {
         this.sopaDeLetras[i][j] = this.inicializarCasilla(i, j);
